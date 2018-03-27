@@ -7,6 +7,7 @@ RUN apk --no-cache add bash \
                        ca-certificates \
                        curl \
                        git \
+                       libffi-dev \
                        linux-headers \
                        openssl-dev \
                        ncurses-dev \
@@ -27,8 +28,8 @@ RUN latest_pyenv_version="$(git ls-remote https://github.com/pyenv/pyenv.git | a
 COPY patches /tmp/patches
 
 RUN set -e; \
-    for version in 2.6 2.7 3.0 3.1 3.2 3.3 3.4 3.5 3.6; do \
-        latest_version="$(pyenv install --list | awk "NR > 1 && \$1 ~ /^${version}[0-9.]*$/" | tail -1 | tr -d ' ')"; \
+    for version in 2.6 2.7 3.0 3.1 3.2 3.3 3.4 3.5 3.7 3.6; do \
+        latest_version="$(pyenv install --list | awk "NR > 1 && \$1 ~ /^${version}[0-9.]*(b[0-9]*)?$/" | tail -1 | tr -d ' ')"; \
         if [ -f "/tmp/patches/posix_close_${version}.patch" ]; then \
             pyenv install --patch "${latest_version}" < "/tmp/patches/posix_close_${version}.patch"; \
         else \
@@ -45,6 +46,7 @@ FROM alpine:latest
 RUN apk --no-cache add bash \
                        bzip2 \
                        ca-certificates \
+                       libffi \
                        openssl \
                        ncurses \
                        readline \

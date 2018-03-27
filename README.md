@@ -3,8 +3,8 @@
 ## Introduction
 
 This repository contains a Dockerfile for building a Python test image. The Dockerfile is based on Alpine Linux and
-installs the CPython versions `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5` and `3.6`. `Tox` can be used to
-test against the complete set or a subset of these versions.
+installs the CPython versions `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6` and `3.7beta`. `Tox` can be
+used to test against the complete set or a subset of these versions.
 
 ## Usage
 
