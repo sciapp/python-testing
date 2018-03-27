@@ -28,6 +28,7 @@ RUN latest_pyenv_version="$(git ls-remote https://github.com/pyenv/pyenv.git | a
 COPY patches /tmp/patches
 
 RUN set -e; \
+    installed_python_versions=""; \
     for version in 2.6 2.7 3.0 3.1 3.2 3.3 3.4 3.5 3.7 3.6; do \
         latest_version="$(pyenv install --list | awk "NR > 1 && \$1 ~ /^${version}[0-9.]*(b[0-9]*)?$/" | tail -1 | tr -d ' ')"; \
         if [ -f "/tmp/patches/posix_close_${version}.patch" ]; then \
@@ -35,8 +36,9 @@ RUN set -e; \
         else \
             pyenv install "${latest_version}"; \
         fi; \
-        pyenv global "${latest_version}"; \
-    done
+        installed_python_versions="${latest_version} ${installed_python_versions}"; \
+    done; \
+    pyenv global ${installed_python_versions}
 
 RUN pip install -U pip && \
     pip install tox
