@@ -6,7 +6,7 @@ This repository contains a Dockerfile for building a Python test image. The Dock
 installs the CPython versions `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6` and `3.7beta`. `Tox` can be
 used to test against the complete set or a subset of these versions.
 
-## Usage
+## Usage with GitLab CI
 
 Create a `.gitlab-ci.yml` configuration for your project that uses the `python-testing` image:
 
@@ -15,7 +15,7 @@ stages:
   - test
 
 test:
-  image: iffregistry.fz-juelich.de/docker-images/python-testing:latest
+  image: sciapp/python-testing:latest
   stage: test
   script:
     - tox
