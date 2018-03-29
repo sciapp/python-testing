@@ -16,6 +16,8 @@ build:
     - docker build -t ${CI_REGISTRY_IMAGE}/debian/buster:latest -f Dockerfile_debian_buster .
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu:latest -f Dockerfile_ubuntu_1604 .
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest -f Dockerfile_ubuntu_1604 .
+    - docker build -t ${CI_REGISTRY_IMAGE}/centos:latest -f Dockerfile_centos_7 .
+    - docker build -t ${CI_REGISTRY_IMAGE}/centos/7:latest -f Dockerfile_centos_7 .
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker push ${CI_REGISTRY_IMAGE}:latest
     - docker push ${CI_REGISTRY_IMAGE}/alpine:latest
@@ -24,3 +26,5 @@ build:
     - docker push ${CI_REGISTRY_IMAGE}/debian/buster:latest
     - docker push ${CI_REGISTRY_IMAGE}/ubuntu:latest
     - docker push ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest
+    - docker push ${CI_REGISTRY_IMAGE}/centos:latest
+    - docker push ${CI_REGISTRY_IMAGE}/centos/7:latest
