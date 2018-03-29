@@ -1,6 +1,10 @@
 FROM debian:stretch as builder
 LABEL maintainer="Ingo Heimbach <i.heimbach@fz-juelich.de>"
 
+ENV PYENV_ROOT "/usr/local/pyenv"
+ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
+ENV LANG C.UTF-8
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends build-essential \
                                                ca-certificates \
@@ -16,10 +20,6 @@ RUN apt-get update && \
                                                libssl1.0-dev \
                                                zlib1g-dev && \
     rm -rf /var/lib/apt/lists/*
-
-ENV PYENV_ROOT "/usr/local/pyenv"
-ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
-ENV LANG C.UTF-8
 
 RUN latest_pyenv_version="$(git ls-remote https://github.com/pyenv/pyenv.git | awk '$2 ~ "^refs/tags/v[[:digit:]]+\\.[[:digit:]]+\\.[[:digit:]]+$" { print $2 }' | awk -F'/' '{ print substr($NF, 2) }' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -1)" && \
     curl -o "/tmp/v${latest_pyenv_version}.tar.gz" -L "https://github.com/pyenv/pyenv/archive/v${latest_pyenv_version}.tar.gz" && \
@@ -44,6 +44,9 @@ RUN pip install -U pip && \
     pip install tox
 
 FROM debian:stretch
+
+ENV PYENV_ROOT "/usr/local/pyenv"
+ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates \
