@@ -14,9 +14,13 @@ build:
     - docker build -t ${CI_REGISTRY_IMAGE}/debian:latest -f Dockerfile_debian_stretch .
     - docker build -t ${CI_REGISTRY_IMAGE}/debian/stretch:latest -f Dockerfile_debian_stretch .
     - docker build -t ${CI_REGISTRY_IMAGE}/debian/buster:latest -f Dockerfile_debian_buster .
+    - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu:latest -f Dockerfile_ubuntu_1604 .
+    - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest -f Dockerfile_ubuntu_1604 .
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker push ${CI_REGISTRY_IMAGE}:latest
     - docker push ${CI_REGISTRY_IMAGE}/alpine:latest
     - docker push ${CI_REGISTRY_IMAGE}/debian:latest
     - docker push ${CI_REGISTRY_IMAGE}/debian/stretch:latest
     - docker push ${CI_REGISTRY_IMAGE}/debian/buster:latest
+    - docker push ${CI_REGISTRY_IMAGE}/ubuntu:latest
+    - docker push ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest
