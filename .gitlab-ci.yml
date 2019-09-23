@@ -1,5 +1,6 @@
 stages:
   - build
+  - external_build
 
 build:alpine:
   image: docker:latest
@@ -60,3 +61,12 @@ build:centos:
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker push ${CI_REGISTRY_IMAGE}/centos:latest
     - docker push ${CI_REGISTRY_IMAGE}/centos/7:latest
+
+external_build:
+  image: alpine:latest
+  stage: external_build
+  only:
+    - schedules
+  script:
+    - apk --no-cache add curl
+    - curl -X POST "https://cloud.docker.com/api/build/v1/source/71df786f-d22b-463f-815a-3e861cf2fc33/trigger/cdc498ca-7783-42d0-8685-31d7d6cc555d/call/"
