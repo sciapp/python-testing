@@ -15,7 +15,9 @@ LTS and CentOS 7.
 - CentOS 7: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8beta`, `3.9alpha`
 - Debian stretch: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8beta`, `3.9alpha`
 - Debian buster: `2.7`, `3.5`, `3.6`, `3.7`, `3.8beta`, `3.9alpha`
+- Debian bullseye: `2.7`, `3.5`, `3.6`, `3.7`, `3.8beta`, `3.9alpha`
 - Ubuntu 16.04: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8beta`, `3.9alpha`
+- Ubuntu 18.04: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8beta`, `3.9alpha`
 
 ## Usage with GitLab CI
 
@@ -41,10 +43,12 @@ In order for this configuration to work, you need a
 
 - `sciapp/python-testing:latest` (alias for `sciapp/python-testing:latest-alpine`)
 - `sciapp/python-testing:latest-alpine`
-- `sciapp/python-testing:latest-debian` (alias for `sciapp/python-testing:latest-debian-stretch`)
+- `sciapp/python-testing:latest-debian` (alias for `sciapp/python-testing:latest-debian-bullseye`)
 - `sciapp/python-testing:latest-debian-stretch`
 - `sciapp/python-testing:latest-debian-buster`
-- `sciapp/python-testing:latest-ubuntu` (alias for `sciapp/python-testing:latest-ubuntu-16.04`)
+- `sciapp/python-testing:latest-debian-bullseye`
+- `sciapp/python-testing:latest-ubuntu` (alias for `sciapp/python-testing:latest-ubuntu-18.04`)
 - `sciapp/python-testing:latest-ubuntu-16.04`
+- `sciapp/python-testing:latest-ubuntu-18.04`
 - `sciapp/python-testing:latest-centos` (alias for `sciapp/python-testing:latest-centos-7`)
 - `sciapp/python-testing:latest-centos-7`
