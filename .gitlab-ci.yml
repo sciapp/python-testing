@@ -69,4 +69,4 @@ external_build:
     - schedules
   script:
     - apk --no-cache add curl
-    - curl -X POST "https://cloud.docker.com/api/build/v1/source/71df786f-d22b-463f-815a-3e861cf2fc33/trigger/cdc498ca-7783-42d0-8685-31d7d6cc555d/call/"
+    - curl -X POST "https://cloud.docker.com/api/build/v1/source/6b6065e8-dbd6-4a2a-8625-5bcc4cb2fd06/trigger/b60072a9-045e-42bc-9d38-f78c728736f0/call/"
