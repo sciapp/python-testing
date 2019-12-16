@@ -54,7 +54,7 @@ RUN apt-get update && \
                                                libffi6 \
                                                liblzma5 \
                                                libncursesw5 \
-                                               libreadline7 \
+                                               libreadline8 \
                                                libsqlite3-0 \
                                                libssl1.1 \
                                                zlib1g && \
