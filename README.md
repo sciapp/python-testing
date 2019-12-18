@@ -6,8 +6,8 @@ This repository contains various Dockerfiles for building Python test images bas
 Dockerfiles install the CPython versions `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`
 and `3.9alpha` (depending on the Linux distribution some versions are not available).
 [Tox](https://tox.readthedocs.io/en/latest/) is preinstalled and can be used to test against Python `2.7` and `3.3+`.
-Currently, this repository contains Dockerfiles based on Alpine (latest), Debian stretch, Debian buster, Ubuntu 16.04
-LTS and CentOS 7.
+Currently, this repository contains Dockerfiles based on Alpine (latest), Debian stretch, buster and bullseye, Ubuntu
+16.04 and 18.04 LTS and CentOS 7.
 
 ## Available Python versions
 

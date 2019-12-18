@@ -1,6 +1,5 @@
 stages:
   - build
-  - external_build
 
 build:alpine:
   image: docker:latest
@@ -12,9 +11,14 @@ build:alpine:
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}:latest .
     - docker build -t ${CI_REGISTRY_IMAGE}/alpine:latest -f Dockerfile_alpine .
+    - docker tag ${CI_REGISTRY_IMAGE}:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest
+    - docker tag ${CI_REGISTRY_IMAGE}/alpine:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-alpine
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+    - docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_SECRET}
     - docker push ${CI_REGISTRY_IMAGE}:latest
     - docker push ${CI_REGISTRY_IMAGE}/alpine:latest
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-alpine
 
 build:debian:
   image: docker:latest
@@ -28,10 +32,20 @@ build:debian:
     - docker build -t ${CI_REGISTRY_IMAGE}/debian/buster:latest -f Dockerfile_debian_buster .
     - docker build -t ${CI_REGISTRY_IMAGE}/debian/stretch:latest -f Dockerfile_debian_stretch .
     - docker build -t ${CI_REGISTRY_IMAGE}/debian/bullseye:latest -f Dockerfile_debian_bullseye .
+    - docker tag ${CI_REGISTRY_IMAGE}/debian:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-debian
+    - docker tag ${CI_REGISTRY_IMAGE}/debian/buster:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-debian-buster
+    - docker tag ${CI_REGISTRY_IMAGE}/debian/stretch:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-debian-stretch
+    - docker tag ${CI_REGISTRY_IMAGE}/debian/bullseye:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-debian-bullseye
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+    - docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_SECRET}
     - docker push ${CI_REGISTRY_IMAGE}/debian:latest
     - docker push ${CI_REGISTRY_IMAGE}/debian/stretch:latest
     - docker push ${CI_REGISTRY_IMAGE}/debian/buster:latest
+    - docker push ${CI_REGISTRY_IMAGE}/debian/bullseye:latest
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-debian
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-debian-stretch
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-debian-buster
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-debian-bullseye
 
 build:ubuntu:
   image: docker:latest
@@ -44,9 +58,17 @@ build:ubuntu:
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu:latest -f Dockerfile_ubuntu .
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu/18.04:latest -f Dockerfile_ubuntu_1804 .
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest -f Dockerfile_ubuntu_1604 .
+    - docker tag ${CI_REGISTRY_IMAGE}/ubuntu:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu
+    - docker tag ${CI_REGISTRY_IMAGE}/ubuntu/18.04:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-18.04
+    - docker tag ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-16.04
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+    - docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_SECRET}
     - docker push ${CI_REGISTRY_IMAGE}/ubuntu:latest
     - docker push ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest
+    - docker push ${CI_REGISTRY_IMAGE}/ubuntu/18.04:latest
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-16.04
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-18.04
 
 build:centos:
   image: docker:latest
@@ -58,15 +80,11 @@ build:centos:
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/centos:latest -f Dockerfile_centos .
     - docker build -t ${CI_REGISTRY_IMAGE}/centos/7:latest -f Dockerfile_centos_7 .
+    - docker tag ${CI_REGISTRY_IMAGE}/centos:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-centos
+    - docker tag ${CI_REGISTRY_IMAGE}/centos/7:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-centos-7
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
+    - docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_SECRET}
     - docker push ${CI_REGISTRY_IMAGE}/centos:latest
     - docker push ${CI_REGISTRY_IMAGE}/centos/7:latest
-
-external_build:
-  image: alpine:latest
-  stage: external_build
-  only:
-    - schedules
-  script:
-    - apk --no-cache add curl
-    - curl -X POST "https://cloud.docker.com/api/build/v1/source/6b6065e8-dbd6-4a2a-8625-5bcc4cb2fd06/trigger/b60072a9-045e-42bc-9d38-f78c728736f0/call/"
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-centos
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-centos-7
