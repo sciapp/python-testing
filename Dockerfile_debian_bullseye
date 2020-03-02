@@ -51,7 +51,7 @@ ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates \
                                                libbz2-1.0 \
-                                               libffi6 \
+                                               libffi7 \
                                                liblzma5 \
                                                libncursesw5 \
                                                libreadline8 \
