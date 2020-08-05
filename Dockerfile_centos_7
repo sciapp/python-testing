@@ -1,5 +1,5 @@
 FROM centos:7 as builder
-LABEL maintainer="Ingo Heimbach <i.heimbach@fz-juelich.de>"
+LABEL maintainer="Ingo Meyer <i.meyer@fz-juelich.de>"
 
 ENV PYENV_ROOT "/usr/local/pyenv"
 ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
