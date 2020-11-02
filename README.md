@@ -18,6 +18,7 @@ based on Alpine (latest), Debian stretch, buster and bullseye, Ubuntu 16.04 and 
 - Debian bullseye: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`
 - Ubuntu 16.04: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`
 - Ubuntu 18.04: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`
+- Ubuntu 20.04: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`
 
 ## Usage with GitLab CI
 
@@ -47,9 +48,10 @@ In order for this configuration to work, you need a
 - `sciapp/python-testing:latest-debian-stretch`
 - `sciapp/python-testing:latest-debian-buster`
 - `sciapp/python-testing:latest-debian-bullseye`
-- `sciapp/python-testing:latest-ubuntu` (alias for `sciapp/python-testing:latest-ubuntu-18.04`)
+- `sciapp/python-testing:latest-ubuntu` (alias for `sciapp/python-testing:latest-ubuntu-20.04`)
 - `sciapp/python-testing:latest-ubuntu-16.04`
 - `sciapp/python-testing:latest-ubuntu-18.04`
+- `sciapp/python-testing:latest-ubuntu-20.04`
 - `sciapp/python-testing:latest-centos` (alias for `sciapp/python-testing:latest-centos-8`)
 - `sciapp/python-testing:latest-centos-7`
 - `sciapp/python-testing:latest-centos-8`
