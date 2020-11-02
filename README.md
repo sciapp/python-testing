@@ -3,22 +3,23 @@
 ## Introduction
 
 This repository contains various Dockerfiles for building Python test images based on different Linux distributions. The
-Dockerfiles install the CPython versions `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7` and `3.8`
-(depending on the Linux distribution some versions are not available).  [Tox](https://tox.readthedocs.io/en/latest/) is
-preinstalled and can be used to test against Python `2.7` and `3.3+`.  Currently, this repository contains Dockerfiles
-based on Alpine (latest), Debian stretch, buster and bullseye, Ubuntu 16.04 and 18.04 LTS and CentOS 7 and 8.
+Dockerfiles install the CPython versions `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8` and
+`3.9` (depending on the Linux distribution some versions are not available).
+[Tox](https://tox.readthedocs.io/en/latest/) is preinstalled and can be used to test against Python `2.7` and `3.3+`.
+Currently, this repository contains Dockerfiles based on Alpine (latest), Debian stretch, buster and bullseye, Ubuntu
+16.04 and 18.04 LTS and CentOS 7 and 8.
 
 ## Available Python versions
 
-- Alpine: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`
-- CentOS 7: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`
-- CentOS 8: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`
-- Debian stretch: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`
-- Debian buster: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`
-- Debian bullseye: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`
-- Ubuntu 16.04: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`
-- Ubuntu 18.04: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`
-- Ubuntu 20.04: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`
+- Alpine: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
+- CentOS 7: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
+- CentOS 8: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
+- Debian stretch: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
+- Debian buster: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
+- Debian bullseye: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
+- Ubuntu 16.04: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
+- Ubuntu 18.04: `2.6`, `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
+- Ubuntu 20.04: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
 
 ## Usage with GitLab CI
 
