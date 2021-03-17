@@ -18,10 +18,9 @@ RUN yum install -y bzip2-devel \
     yum groupinstall -y "Development Tools" && \
     yum clean all
 
-RUN latest_pyenv_version="$(git ls-remote https://github.com/pyenv/pyenv.git | awk '$2 ~ "^refs/tags/v[[:digit:]]+\\.[[:digit:]]+\\.[[:digit:]]+$" { print $2 }' | awk -F'/' '{ print substr($NF, 2) }' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -1)" && \
-    curl -o "/tmp/v${latest_pyenv_version}.tar.gz" -L "https://github.com/pyenv/pyenv/archive/v${latest_pyenv_version}.tar.gz" && \
-    tar -C /tmp/ -xvf "/tmp/v${latest_pyenv_version}.tar.gz" && \
-    mv "/tmp/pyenv-${latest_pyenv_version}" "${PYENV_ROOT}"
+RUN curl -o "/tmp/pyenv-master.tar.gz" -L "https://github.com/pyenv/pyenv/archive/master.tar.gz" && \
+    tar -C /tmp/ -xvf "/tmp/pyenv-master.tar.gz" && \
+    mv "/tmp/pyenv-master" "${PYENV_ROOT}"
 
 RUN if [ ! -d "${PYENV_ROOT}/plugins/python-build/share/python-build/patches/3.3.7" ]; then \
         cp -r "${PYENV_ROOT}/plugins/python-build/share/python-build/patches/3.3.6" "${PYENV_ROOT}/plugins/python-build/share/python-build/patches/3.3.7" && \
