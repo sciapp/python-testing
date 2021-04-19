@@ -30,7 +30,7 @@ COPY patches/alpine /tmp/patches
 RUN set -e; \
     installed_python_versions=""; \
     for version in 2.7 3.5 3.6 3.7 3.8 3.9; do \
-        latest_version="$(pyenv install --list | awk "NR > 1 && \$1 ~ /^${version}[0-9.]*(-dev)?$/" | tail -1 | tr -d ' ')"; \
+        latest_version="$(pyenv install --list | awk "NR > 1 && \$1 ~ /^$(echo "${version}" | sed 's/\./\\./g')(\.[0-9.]*)?(-dev)?$/" | tail -1 | tr -d ' ')"; \
         if [ -f "/tmp/patches/posix_close_${version}.patch" ]; then \
             pyenv install --patch "${latest_version}" < "/tmp/patches/posix_close_${version}.patch"; \
         else \
