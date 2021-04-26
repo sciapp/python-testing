@@ -32,7 +32,7 @@ RUN if [ ! -d "${PYENV_ROOT}/plugins/python-build/share/python-build/patches/3.3
 
 RUN set -e; \
     installed_python_versions=""; \
-    for version in 2.6 2.7 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9; do \
+    for version in 2.7 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9; do \
         latest_version="$(pyenv install --list | awk "NR > 1 && \$1 ~ /^$(echo "${version}" | sed 's/\./\\./g')(\.[0-9.]*)?(-dev)?$/" | tail -1 | tr -d ' ')"; \
         pyenv install "${latest_version}"; \
         installed_python_versions="${latest_version} ${installed_python_versions}"; \
