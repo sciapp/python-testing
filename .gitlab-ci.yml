@@ -4,10 +4,6 @@ stages:
 build:alpine:
   image: docker:latest
   stage: build
-  variables:
-    DOCKER_DRIVER: overlay2
-  services:
-    - docker:dind
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}:latest .
     - docker build -t ${CI_REGISTRY_IMAGE}/alpine:latest -f Dockerfile_alpine .
@@ -23,10 +19,6 @@ build:alpine:
 build:debian:
   image: docker:latest
   stage: build
-  variables:
-    DOCKER_DRIVER: overlay2
-  services:
-    - docker:dind
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/debian:latest -f Dockerfile_debian .
     - docker build -t ${CI_REGISTRY_IMAGE}/debian/buster:latest -f Dockerfile_debian_buster .
@@ -50,10 +42,6 @@ build:debian:
 build:ubuntu:
   image: docker:latest
   stage: build
-  variables:
-    DOCKER_DRIVER: overlay2
-  services:
-    - docker:dind
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu:latest -f Dockerfile_ubuntu .
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest -f Dockerfile_ubuntu_1604 .
@@ -77,10 +65,6 @@ build:ubuntu:
 build:centos:
   image: docker:latest
   stage: build
-  variables:
-    DOCKER_DRIVER: overlay2
-  services:
-    - docker:dind
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/centos:latest -f Dockerfile_centos .
     - docker build -t ${CI_REGISTRY_IMAGE}/centos/8:latest -f Dockerfile_centos_8 .
