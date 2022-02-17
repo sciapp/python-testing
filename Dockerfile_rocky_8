@@ -1,4 +1,4 @@
-FROM centos:8 as builder
+FROM rockylinux:8 as builder
 LABEL maintainer="Ingo Meyer <i.meyer@fz-juelich.de>"
 
 ENV PYENV_ROOT "/usr/local/pyenv"
@@ -39,7 +39,7 @@ RUN set -e; \
 RUN pip install -U pip && \
     pip install tox
 
-FROM centos:8
+FROM rockylinux:8
 
 ENV PYENV_ROOT "/usr/local/pyenv"
 ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
