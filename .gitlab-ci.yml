@@ -47,20 +47,23 @@ build:ubuntu:
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest -f Dockerfile_ubuntu_1604 .
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu/18.04:latest -f Dockerfile_ubuntu_1804 .
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu/20.04:latest -f Dockerfile_ubuntu_2004 .
+    - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu/22.04:latest -f Dockerfile_ubuntu_2004 .
     - docker tag ${CI_REGISTRY_IMAGE}/ubuntu:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu
     - docker tag ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-16.04
     - docker tag ${CI_REGISTRY_IMAGE}/ubuntu/18.04:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-18.04
     - docker tag ${CI_REGISTRY_IMAGE}/ubuntu/20.04:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-20.04
+    - docker tag ${CI_REGISTRY_IMAGE}/ubuntu/22.04:latest ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-22.04
     - docker login -u gitlab-ci-token -p ${CI_JOB_TOKEN} ${CI_REGISTRY}
     - docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_SECRET}
     - docker push ${CI_REGISTRY_IMAGE}/ubuntu:latest
     - docker push ${CI_REGISTRY_IMAGE}/ubuntu/16.04:latest
     - docker push ${CI_REGISTRY_IMAGE}/ubuntu/18.04:latest
     - docker push ${CI_REGISTRY_IMAGE}/ubuntu/20.04:latest
+    - docker push ${CI_REGISTRY_IMAGE}/ubuntu/22.04:latest
     - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu
     - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-16.04
     - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-18.04
-    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-20.04
+    - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-22.04
 
 build:centos:
   image: docker:stable

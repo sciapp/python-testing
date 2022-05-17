@@ -3,10 +3,11 @@
 ## Introduction
 
 This repository contains various Dockerfiles for building Python test images based on different Linux distributions. The
-Dockerfiles install the CPython versions `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8` and `3.9`
-(depending on the Linux distribution some versions are not available).  [Tox](https://tox.readthedocs.io/en/latest/) is
-preinstalled and can be used to test against Python `2.7` and `3.3+`.  Currently, this repository contains Dockerfiles
-based on Alpine (latest), Debian stretch, buster and bullseye, Ubuntu 16.04 and 18.04 LTS, CentOS 7 and Rocky Linux 8.
+Dockerfiles install the CPython versions `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`,`3.9` and
+`3.10` (depending on the Linux distribution some versions are not available).
+[Tox](https://tox.readthedocs.io/en/latest/) is preinstalled and can be used to test against Python `2.7` and `3.3+`.
+Currently, this repository contains Dockerfiles based on Alpine (latest), Debian stretch, buster and bullseye, Ubuntu
+16.04, 18.04, 20.04 and 22.04 LTS, CentOS 7 and Rocky Linux 8.
 
 ## Available Python versions
 
@@ -19,6 +20,7 @@ based on Alpine (latest), Debian stretch, buster and bullseye, Ubuntu 16.04 and 
 - Ubuntu 16.04: `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
 - Ubuntu 18.04: `2.7`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
 - Ubuntu 20.04: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`
+- Ubuntu 22.04: `2.7`, `3.7`, `3.8`, `3.9`, `3.10`
 
 ## Usage with GitLab CI
 
@@ -48,10 +50,11 @@ In order for this configuration to work, you need a
 - `sciapp/python-testing:latest-debian-stretch`
 - `sciapp/python-testing:latest-debian-buster`
 - `sciapp/python-testing:latest-debian-bullseye`
-- `sciapp/python-testing:latest-ubuntu` (alias for `sciapp/python-testing:latest-ubuntu-20.04`)
+- `sciapp/python-testing:latest-ubuntu` (alias for `sciapp/python-testing:latest-ubuntu-22.04`)
 - `sciapp/python-testing:latest-ubuntu-16.04`
 - `sciapp/python-testing:latest-ubuntu-18.04`
 - `sciapp/python-testing:latest-ubuntu-20.04`
+- `sciapp/python-testing:latest-ubuntu-22.04`
 - `sciapp/python-testing:latest-rocky` (alias for `sciapp/python-testing:latest-rocky-8`)
 - `sciapp/python-testing:latest-centos-7`
 - `sciapp/python-testing:latest-rocky-8`
