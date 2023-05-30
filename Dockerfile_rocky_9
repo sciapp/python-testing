@@ -5,7 +5,7 @@ ENV PYENV_ROOT "/usr/local/pyenv"
 ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
 ENV LANG C.UTF-8
 
-RUN yum install -y bzip2-devel \
+RUN dnf install -y bzip2-devel \
                    ca-certificates \
                    curl-minimal \
                    libffi-devel \
@@ -15,8 +15,8 @@ RUN yum install -y bzip2-devel \
                    sqlite-devel \
                    xz-devel \
                    zlib-devel && \
-    yum groupinstall -y "Development Tools" && \
-    yum clean all
+    dnf groupinstall -y "Development Tools" && \
+    dnf clean all
 
 RUN curl -o "/tmp/pyenv-master.tar.gz" -L "https://github.com/pyenv/pyenv/archive/master.tar.gz" && \
     tar -C /tmp/ -xvf "/tmp/pyenv-master.tar.gz" && \
@@ -44,7 +44,7 @@ FROM rockylinux:9
 ENV PYENV_ROOT "/usr/local/pyenv"
 ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
 
-RUN yum install -y bzip2 \
+RUN dnf install -y bzip2 \
                    ca-certificates \
                    libffi \
                    ncurses \
@@ -53,7 +53,7 @@ RUN yum install -y bzip2 \
                    sqlite \
                    xz \
                    zlib && \
-    yum clean all
+    dnf clean all
 
 COPY --from=builder "${PYENV_ROOT}" "${PYENV_ROOT}"
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
