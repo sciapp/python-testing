@@ -14,6 +14,7 @@ Currently, this repository contains Dockerfiles based on Alpine (latest), Debian
 - Alpine: `2.7`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
 - CentOS 7: `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
 - Rocky Linux 8: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
+- Rocky Linux 9: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
 - Debian buster: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
 - Debian bullseye: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
 - Ubuntu 16.04: `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
@@ -53,6 +54,7 @@ In order for this configuration to work, you need a
 - `sciapp/python-testing:latest-ubuntu-18.04`
 - `sciapp/python-testing:latest-ubuntu-20.04`
 - `sciapp/python-testing:latest-ubuntu-22.04`
-- `sciapp/python-testing:latest-rocky` (alias for `sciapp/python-testing:latest-rocky-8`)
+- `sciapp/python-testing:latest-rocky` (alias for `sciapp/python-testing:latest-rocky-9`)
 - `sciapp/python-testing:latest-centos-7`
 - `sciapp/python-testing:latest-rocky-8`
+- `sciapp/python-testing:latest-rocky-9`

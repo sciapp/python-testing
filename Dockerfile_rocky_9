@@ -1,0 +1,62 @@
+FROM rockylinux:9 as builder
+LABEL maintainer="Ingo Meyer <i.meyer@fz-juelich.de>"
+
+ENV PYENV_ROOT "/usr/local/pyenv"
+ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
+ENV LANG C.UTF-8
+
+RUN yum install -y bzip2-devel \
+                   ca-certificates \
+                   curl-minimal \
+                   libffi-devel \
+                   ncurses-devel \
+                   openssl-devel \
+                   readline-devel \
+                   sqlite-devel \
+                   xz-devel \
+                   zlib-devel && \
+    yum groupinstall -y "Development Tools" && \
+    yum clean all
+
+RUN curl -o "/tmp/pyenv-master.tar.gz" -L "https://github.com/pyenv/pyenv/archive/master.tar.gz" && \
+    tar -C /tmp/ -xvf "/tmp/pyenv-master.tar.gz" && \
+    mv "/tmp/pyenv-master" "${PYENV_ROOT}"
+
+RUN if [ ! -d "${PYENV_ROOT}/plugins/python-build/share/python-build/patches/3.3.7" ]; then \
+        cp -r "${PYENV_ROOT}/plugins/python-build/share/python-build/patches/3.3.6" "${PYENV_ROOT}/plugins/python-build/share/python-build/patches/3.3.7" && \
+        mv "${PYENV_ROOT}/plugins/python-build/share/python-build/patches/3.3.7/Python-3.3.6" "${PYENV_ROOT}/plugins/python-build/share/python-build/patches/3.3.7/Python-3.3.7"; \
+    fi
+
+RUN set -e; \
+    installed_python_versions=""; \
+    for version in 2.7 3.5 3.6 3.7 3.8 3.9 3.10 3.11; do \
+        latest_version="$(pyenv install --list | awk "NR > 1 && \$1 ~ /^$(echo "${version}" | sed 's/\./\\./g')(\.[0-9.]*)?(-dev)?$/" | tail -1 | tr -d ' ')"; \
+        pyenv install "${latest_version}"; \
+        installed_python_versions="${latest_version} ${installed_python_versions}"; \
+    done; \
+    pyenv global ${installed_python_versions}
+
+RUN pip install -U pip && \
+    pip install tox
+
+FROM rockylinux:9
+
+ENV PYENV_ROOT "/usr/local/pyenv"
+ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
+
+RUN yum install -y bzip2 \
+                   ca-certificates \
+                   libffi \
+                   ncurses \
+                   openssl \
+                   readline \
+                   sqlite \
+                   xz \
+                   zlib && \
+    yum clean all
+
+COPY --from=builder "${PYENV_ROOT}" "${PYENV_ROOT}"
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["/bin/bash"]
