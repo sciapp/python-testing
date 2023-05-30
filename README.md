@@ -45,7 +45,7 @@ In order for this configuration to work, you need a
 
 - `sciapp/python-testing:latest` (alias for `sciapp/python-testing:latest-alpine`)
 - `sciapp/python-testing:latest-alpine`
-- `sciapp/python-testing:latest-debian` (alias for `sciapp/python-testing:latest-debian-buster`)
+- `sciapp/python-testing:latest-debian` (alias for `sciapp/python-testing:latest-debian-bullseye`)
 - `sciapp/python-testing:latest-debian-buster`
 - `sciapp/python-testing:latest-debian-bullseye`
 - `sciapp/python-testing:latest-ubuntu` (alias for `sciapp/python-testing:latest-ubuntu-22.04`)
