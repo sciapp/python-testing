@@ -4,23 +4,23 @@
 
 This repository contains various Dockerfiles for building Python test images based on different Linux distributions. The
 Dockerfiles install the CPython versions `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`,`3.9`,
-`3.10` and `3.11` (depending on the Linux distribution some versions are not available).
+`3.10`, `3.11`, `3.12` (depending on the Linux distribution some versions are not available).
 [Tox](https://tox.readthedocs.io/en/latest/) is preinstalled and can be used to test against Python `2.7` and `3.3+`.
 Currently, this repository contains Dockerfiles based on Alpine (latest), Debian buster and bullseye, Ubuntu 16.04,
 18.04, 20.04 and 22.04 LTS, CentOS 7 and Rocky Linux 8.
 
 ## Available Python versions
 
-- Alpine: `2.7`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
+- Alpine: `2.7`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`
 - CentOS 7: `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
-- Rocky Linux 8: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
-- Rocky Linux 9: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
-- Debian buster: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
-- Debian bullseye: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
+- Rocky Linux 8: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`
+- Rocky Linux 9: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`
+- Debian buster: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`
+- Debian bullseye: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`
 - Ubuntu 16.04: `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
 - Ubuntu 18.04: `2.7`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
-- Ubuntu 20.04: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
-- Ubuntu 22.04: `2.7`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`
+- Ubuntu 20.04: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`
+- Ubuntu 22.04: `2.7`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`
 
 ## Usage with GitLab CI
 
