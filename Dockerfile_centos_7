@@ -5,6 +5,13 @@ ENV PYENV_ROOT "/usr/local/pyenv"
 ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
 ENV LANG en_US.utf8
 
+# CentOS 7 has reached end-of-life on 2024-06-30, thus use vault mirrors
+RUN sed \
+        -i \
+        -e 's/^mirrorlist/#mirrorlist/g' \
+        -e 's%#baseurl=http://mirror.centos.org%baseurl=http://vault.centos.org%g' \
+        /etc/yum.repos.d/CentOS-*
+
 RUN yum groupinstall -y "Development Tools" && \
     yum install -y bzip2-devel \
                    ca-certificates \
@@ -43,6 +50,13 @@ FROM centos:7
 
 ENV PYENV_ROOT "/usr/local/pyenv"
 ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
+
+# CentOS 7 has reached end-of-life on 2024-06-30, thus use vault mirrors
+RUN sed \
+        -i \
+        -e 's/^mirrorlist/#mirrorlist/g' \
+        -e 's%#baseurl=http://mirror.centos.org%baseurl=http://vault.centos.org%g' \
+        /etc/yum.repos.d/CentOS-*
 
 RUN yum install -y bzip2 \
                    ca-certificates \
