@@ -7,7 +7,7 @@ Dockerfiles install the CPython versions `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4
 `3.10`, `3.11`, `3.12`, `3.13` (depending on the Linux distribution some versions are not available).
 [Tox](https://tox.readthedocs.io/en/latest/) is preinstalled and can be used to test against Python `2.7` and `3.3+`.
 Currently, this repository contains Dockerfiles based on Alpine (latest), Debian buster, bullseye and bookworm, Ubuntu
-16.04, 18.04, 20.04, 22.04 and 24.04 LTS, CentOS 7 and Rocky Linux 8 and 9.
+16.04, 18.04, 20.04, 22.04 and 24.04 LTS, CentOS 7 and Rocky Linux 8, 9 and 10.
 
 ## Available Python versions
 
@@ -15,6 +15,7 @@ Currently, this repository contains Dockerfiles based on Alpine (latest), Debian
 - CentOS 7: `2.7`, `3.0`, `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`
 - Rocky Linux 8: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`, `3.13`
 - Rocky Linux 9: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`, `3.13`
+- Rocky Linux 10: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`, `3.13`
 - Debian buster: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`, `3.13`
 - Debian bullseye: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`, `3.13`
 - Debian bookworm: `2.7`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `3.11`, `3.12`, `3.13`
@@ -56,7 +57,8 @@ In order for this configuration to work, you need a
 - `sciapp/python-testing:latest-ubuntu-18.04`
 - `sciapp/python-testing:latest-ubuntu-20.04`
 - `sciapp/python-testing:latest-ubuntu-22.04`
-- `sciapp/python-testing:latest-rocky` (alias for `sciapp/python-testing:latest-rocky-9`)
+- `sciapp/python-testing:latest-rocky` (alias for `sciapp/python-testing:latest-rocky-10`)
 - `sciapp/python-testing:latest-centos-7`
 - `sciapp/python-testing:latest-rocky-8`
 - `sciapp/python-testing:latest-rocky-9`
+- `sciapp/python-testing:latest-rocky-10`
