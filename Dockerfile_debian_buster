@@ -1,11 +1,12 @@
-FROM debian:buster as builder
+FROM debian:buster-20220912 as builder
 LABEL maintainer="Ingo Meyer <i.meyer@fz-juelich.de>"
 
 ENV PYENV_ROOT "/usr/local/pyenv"
 ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
 ENV LANG C.UTF-8
 
-RUN apt-get update && \
+RUN echo "deb http://archive.debian.org/debian buster main" > /etc/apt/sources.list && \
+    apt-get update && \
     apt-get install -y --no-install-recommends build-essential \
                                                ca-certificates \
                                                curl \
@@ -42,12 +43,13 @@ RUN set -e; \
 RUN pip install -U pip && \
     pip install tox
 
-FROM debian:buster
+FROM debian:buster-20220912
 
 ENV PYENV_ROOT "/usr/local/pyenv"
 ENV PATH "${PYENV_ROOT}/bin:${PYENV_ROOT}/shims:${PATH}"
 
-RUN apt-get update && \
+RUN echo "deb http://archive.debian.org/debian buster main" > /etc/apt/sources.list && \
+    apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates \
                                                libbz2-1.0 \
                                                libffi6 \
