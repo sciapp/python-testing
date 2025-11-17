@@ -2,7 +2,7 @@ stages:
   - build
 
 build:alpine:
-  image: docker:stable
+  image: docker:latest
   stage: build
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}:latest .
@@ -17,7 +17,7 @@ build:alpine:
     - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-alpine
 
 build:debian:
-  image: docker:stable
+  image: docker:latest
   stage: build
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/debian:latest -f Dockerfile_debian .
@@ -44,7 +44,7 @@ build:debian:
     - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-debian-trixie
 
 build:ubuntu:
-  image: docker:stable
+  image: docker:latest
   stage: build
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/ubuntu:latest -f Dockerfile_ubuntu .
@@ -75,7 +75,7 @@ build:ubuntu:
     - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-ubuntu-24.04
 
 build:centos:
-  image: docker:stable
+  image: docker:latest
   stage: build
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/centos/7:latest -f Dockerfile_centos_7 .
@@ -86,7 +86,7 @@ build:centos:
     - docker push ${DOCKERHUB_NAMESPACE}/${CI_PROJECT_NAME}:latest-centos-7
 
 build:rocky:
-  image: docker:stable
+  image: docker:latest
   stage: build
   script:
     - docker build -t ${CI_REGISTRY_IMAGE}/rocky:latest -f Dockerfile_rocky .
